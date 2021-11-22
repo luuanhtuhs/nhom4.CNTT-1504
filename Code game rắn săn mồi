@@ -1,0 +1,55 @@
+struct Point {
+    int x, y;
+    int x0, y0;
+};
+Point snake[100]; // con rắn của chúng ta
+Point direction; // hướng đi hiện tại của rắn.
+Point food; // đối tượng thức ăn
+const int DIRECTION = 10; // khoảng cách di chuyển
+snake[0].x += direction.x;
+snake[0].y += direction.y;
+snake[0].x0 = snake[0].x;
+snake[0].y0 = snake[0].y;
+for (int i = 0;i < snakeLength;i++){
+    # Nếu là đầu rắn
+    if (i == 0){
+        snake[0].x0 = snake[0].x;snake[0].y0 = snake[0].y;
+        snake[0].x += direction.x;
+        snake[0].y += direction.y;
+    }
+    else {
+        snake[i].x0 = snake[i].x;snake[i].y0 = snake[i].y;
+        snake[i].x = snake[i-1].x0;snake[i].y = snake[i-1].y0;
+    }
+}
+struct HighScore {
+    int score;
+    char name[30];
+};
+int level; # level của game , đi nhanh hay đi chậm đó
+bool endGame; # Lưu trạng thái của game: kết thúc hay chưa
+int snakeLength; # Độ dài hiện tại của rắn
+Point snake[100]; # Con rắn
+Point direction; # Hướng đi
+Point food; # Đồ ăn
+const int DIRECTION = 10; # Khoảng cách của 1 lần dịch chuyển
+HighScore  highscore[5]; # Lưu 5 người chơi có điểm cao nhất
+void initGame ();
+bool checkPoint ();
+void drawPoint (int x,int y,int r);
+void moveSnake ();
+void drawSnake ();
+void drawFood ();
+void drawGame ();
+void classic();
+void modern();
+void mainLoop (void (*gloop)());
+void run ();
+void changeDirecton (int x);
+void showHighScore();
+void getHighScore();
+void checkHighScore(int score);
+void initScore();
+bool isEmpty();
+void showText(int x,int y,char *str);
+void showTextBackground(int x,int y,char *str,int color);
